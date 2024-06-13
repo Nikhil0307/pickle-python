@@ -8,6 +8,10 @@ def Serialize_to_file(data_to_serialize, filename) -> Any:
         return True
 
 
+def Serialize(data_to_serialize) -> bytes:
+    return pickle.dumps(obj=data_to_serialize, protocol=pickle.HIGHEST_PROTOCOL)
+
+
 if __name__ == '__main__':
     data = {
         'a': [1, 2.0, 3 + 4j],
@@ -15,3 +19,5 @@ if __name__ == '__main__':
         'c': {None, True, False}
     }
     Serialize_to_file(data_to_serialize=data, filename="test1")
+    serialized_Val = Serialize(data_to_serialize=data)
+    print(serialized_Val)
